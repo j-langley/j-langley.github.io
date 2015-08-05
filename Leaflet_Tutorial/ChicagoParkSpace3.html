@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My map</title>  
+		<link rel="stylesheet" href="leaflet.css" />
+		<script src="leaflet.js"></script>
+		<script type="text/javascript" src="data.js"></script>
+    </head>
+
+    <body>
+		<div id="map" style="height: 600px"></div>
+		
+		<script type="text/javascript">  
+			var map = L.map('map').setView([41.8781136, -87.6297982], 10);
+			
+			L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
+               attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+               minZoom: 10,
+			   maxZoom: 15
+            }).addTo(map);
+			
+			function getColor(value) {
+    return value > 171.948048  ? '#006837':
+           value > 58.791171   ? '#31a354':
+           value > 24.272350   ? '#78c679':
+                           '#edf8e9';
+}
+			L.geoJson(data).addTo(map);
+		</script>
+		
+   
+   </body>    
+</html>
